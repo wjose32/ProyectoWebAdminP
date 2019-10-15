@@ -9,8 +9,8 @@ import { ApiService } from './api.service';
 })
 export class AppComponent {
   datos = [{titulo: 'test',direccion:'test',descripcion:'test',disponible:true,calificacionP:1,idDepartamento:1}];
-  datos1 ={titulo:'',direccion:'',descripcion:'',disponible:false,calificacionP:'',idDepartamento:0};
-  departamentos={id:0,nombre:''};
+  datos1 ={titulo:'',direccion:'',descripcion:'',disponible:false,rutaLugar:'',calificacionP:'',idDepartamento:0};
+  departamentos=[{id:0,nombre:''}];
   titulo;
   descripcion;
  
@@ -39,6 +39,10 @@ export class AppComponent {
         console.log(error);
       }
     );
+  }
+
+  ngOnInit(){
+    this.getDepartamentos();
   }
 
   getDepartamentos=()=>{
