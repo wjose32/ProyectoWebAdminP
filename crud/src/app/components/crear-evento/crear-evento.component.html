@@ -1,0 +1,132 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<head>
+  <style>
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        #map {
+          width: 500px;
+          height: 500px;
+        }
+        #coords{width: 500px;}
+        
+      </style>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-image: linear-gradient(-80deg, rgb(255, 166, 0), rgb(233, 18, 100))">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Chronos</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+      <button class="btn btn-success my-2 my-sm-0" type="submit" >Buscar</button>
+    </form>
+  </div>
+</nav>
+
+  
+
+  <div class="container">
+    <div class="row mt-3">
+        <div class="col">
+                <div class="row ">
+                    <div class="col text-center">
+                      <br>
+                        <h1>Crear Evento</h1>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="nombre">Nombre del Evento</label>
+                        <input type="text" class="form-control" placeholder="Titulo" [(ngModel)]="datos1.titulo"/>
+                    </div>
+                    <div class="col mb-3 ">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" autocomplete="off"  class="form-control" placeholder="dd-mm-yyyy" [(ngModel)]="datos1.fecha"/>
+                    </div>
+                    <div class="col mb-3 ">
+                        <label for="fecha">Hora</label>
+                        <input type="time" autocomplete="off"  class="form-control" placeholder="dd-mm-yyyy" [(ngModel)]="datos1.hora"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12 col-md-6">
+                        <label for="imagen">Imagen del evento  &nbsp;</label>
+                        <input type="file"/>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label >Disponible  &nbsp;</label>
+                        <input type="checkbox" [(ngModel)]="datos1.disponible"/>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <br>
+                      <label>Direccion</label>
+                      <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="datos1.direccion"/> 
+                    </div>
+                </div>
+                  <div class="form-group row">
+                    <div class="col-12">
+                        <label for="mensaje">Descripción</label>
+                        <textarea  class="form-control mensaje" placeholder="Descripción del evento" [(ngModel)]="datos1.descripcion"></textarea>
+                  </div>
+                  <div class="col-12 col-md-6 mb-3">
+                      <label>Departamento</label>
+                      <div class="input-field col s12">
+                          <select id="listCenTra">
+                              <option value="" *ngFor="let departamento of departamentos">
+                                 {{departamento.nombre}}
+                             </option>
+                            </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label>Ruta Lugar</label>
+                  <div class="col-12 col-md-6 mb-3">
+                  <input id="coords" type="text" [(ngModel)]="datos1.rutaLugar"/><br>
+                  </div>
+                  <div id="map"></div>
+                </div>
+
+                <div class="col-12 col-md-12 " >
+                    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="Agregar()">Agregar</button><br>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="getDepartamentos">Agregar2</button><br>
+                </div>
+        </div>
+    </div>
+</div>
+   
+     
+  </body>
+   
+         
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
