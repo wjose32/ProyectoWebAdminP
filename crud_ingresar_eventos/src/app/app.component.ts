@@ -15,7 +15,8 @@ export class AppComponent {
   seleccionarDepartamento;
   dertamentos=[{id:0,nombre:''}];
   selectedFile: File=null;
-  
+  public respuestaImagenEnviada;
+  public resultadoCarga;
  
   
   constructor(private api: ApiService){
@@ -103,10 +104,19 @@ this.api.getUnDato(datosM.codigo).subscribe(
     console.log(event);
     this.selectedFile = <File>event.target.files[0];
   }
-  subirImagen=(datosM)=>{
+  subirImagen=(selectedFile,datosM)=>{
     this.api.onUpload(this.selectedFile,datosM.codigo);
   }
 
+
+
+  public cargandoImagen(files: FileList){
+
+		this.api.postFileImagen(files[0]).subscribe(
+
+		);//FIN DE METODO SUBSCRIBE
+
+	}
 
 
 }

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ApiService {
+  public url_servidor = "http://edvfelipe.pythonanywhere.com/api/imagenes/?codigo=QPIJKO3B37EO9SS6RENHE1WP975LGK";
   baseurl="http://edvfelipe.pythonanywhere.com/api";
   httpHeaders= new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http:HttpClient) { }
@@ -45,6 +46,13 @@ export class ApiService {
     );
     
   }
+  public postFileImagen(imagenParaSubir: File){
+
+		const formData = new FormData(); 
+		formData.append('imagenPropia', imagenParaSubir, imagenParaSubir.name); 
+		return this.http.post(this.url_servidor, formData);
+
+	}
   
   
 }
