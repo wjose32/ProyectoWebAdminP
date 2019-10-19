@@ -1,0 +1,157 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+  <div>
+    
+    <label >INGRESAR EVENTO</label><br>
+    <br>
+    <label>Titulo</label>
+    <input type="text" placeholder="ingrese titulo" [(ngModel)]="datos1.titulo"/><br> 
+    <label>Descripcion</label>
+    <input type="text" [(ngModel)]="datos1.descripcion"/><br> 
+    <label>Direccion</label>
+    <input type="text" [(ngModel)]="datos1.direccion"/><br> 
+    <label >Disponible</label>
+    <input type="checkbox" [(ngModel)]="datos1.disponible"/><br>
+  </div>
+  
+  <div>
+    <label>Fecha</label>
+    <input type="date" min="2019-02-01" max="2060-01-01" [(ngModel)]="datos1.fecha"/><br> 
+    <label >Hora</label>
+    <input type="time" [(ngModel)]="datos1.hora"/><br> 
+  </div>
+
+  <div>
+    <label >Seleccione el lugar del evento </label><br>
+      <div id="map" ></div>
+   <label>Coordenadas lugar</label>    <br>
+    <input id="coords" type="text" readonly="readonly"  /><br>
+    
+
+    <br>
+    <br>
+    <label >Ingresar coordenadas</label> <br>
+    <input id="rut" placeholder="copie aqui las coordenadas" type="text" [(ngModel)]="datos1.rutaLugar" /><br>
+    <br>
+    <label >Departamento</label><br>
+
+    <div >
+        <div >
+            <select  >
+                <option  *ngFor="let dertamentosD of dertamentos" [value]="dertamentosD.nombre" >
+                    <h2 (click)=datosclickeddep(dertamentosD) > {{dertamentosD.nombre}}</h2> 
+                    
+               </option>
+              </select>
+            
+            <br>
+            <br>
+      </div>
+    </div>
+    
+    <input id="ocultar" type="text" [(ngModel)]="seleccionarDepartamento.codigo"/><br> <!-- * comentarla* -->
+    
+    <button (click)="Agregar()">Agregar</button>
+  </div>
+ <br>
+ <br>
+  <label >LISTAR EVENTOS</label>
+    <div>
+     
+
+      <h2>Lista de datos</h2>
+<ul>
+  <li *ngFor= "let datos of datos">
+
+    <h2>Titulo: {{datos.titulo}}</h2>
+    <h2>Descripcion: {{datos.descripcion}}</h2>
+    <h2>Direccion: {{datos.direccion}}</h2>
+    <h2>Fecha: {{datos.fecha}}</h2>
+    <h2>hora: {{datos.hora}}</h2>
+    <h2>Disponible: {{datos.disponible}}</h2>
+    <h2>Ruta Lugar: {{datos.rutaLugar}}</h2>
+    <h2>IdDepartamento: {{datos.idDepartamento}}</h2>
+  </li>
+</ul>
+    </div>   
+    <div>
+     <LAbel>ACTUALIZAR EVENTO (MODIFICAR)</LAbel> <br>
+     <label >lista eventos</label>
+     <label >haga click en el nombre del evento a modificar</label>
+     <br>
+     <ul   >
+
+
+
+          <div >
+              <div >
+                  <select onchange="datosclicked(datosM)"  >
+                      <option *ngFor= "let datosM of datos" >
+                          <h2 (click)=datosclicked(datosM) > {{datosM.titulo}}</h2> 
+                          
+                     </option>
+                    </select>
+                  
+                  <br>
+                  <br>
+            </div>
+          </div>
+        
+        
+          
+</ul>
+titulo<input  type="text" [(ngModel)]="seleccionarEvento.titulo"/><br> 
+direccion<input type="text" [(ngModel)]="seleccionarEvento.direccion"/><br> 
+descripcion<input type="text" [(ngModel)]="seleccionarEvento.descripcion"/><br> 
+disponible<input type="checkbox" [(ngModel)]="seleccionarEvento.disponible"/><br> 
+fecha<input type="date" [(ngModel)]="seleccionarEvento.fecha"/><br> 
+hora<input type="time" [(ngModel)]="seleccionarEvento.hora"/><br> 
+ruta<input type="text" [(ngModel)]="seleccionarEvento.rutaLugar"/><br>
+calificacion<input type="text" [(ngModel)]="seleccionarEvento.calificacionP"/><br> 
+deptartamento<input type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/><br> <!-- * comentarla* -->
+    <div >
+        <div >
+            <select id="listaactualizar" onchange="ddlselect;" >
+                <option  *ngFor="let dertamentos of derrtamentos" >
+                   {{dertamentos.nombre}
+               </option>
+              </select>
+            <br>
+            <br>
+           
+      </div>
+    </div>
+     <br>
+    </div>
+    <button (click)="actualizarEvento()">acualizar</button>
+    <div>
+      <label> BORRAR EVENTO</label>
+      <button (click)="borrarEvento">borar evento</button>
+    </div>
+
+    <label >imagen</label>
+    <input type="file" (change)="onFileSelected($event)"><br>
+    <br>
+    <button type="button" (click)="subirImagen()" >cargar imagen</button>
+
+       
+   
+           
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
