@@ -128,15 +128,11 @@ deptartamento<input type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/>
       <button (click)="borrarEvento">borar evento</button>
     </div>
 
-    <label >imagen</label>
-    <input type="file" (change)="onFileSelected($event)"><br>
-  
-    <br>
-    <button type="button" (click)="subirImagen()" >cargar imagen</button><br>
-    <br>
-    <br>
-
-    <input type="file" (change)="cargandoImagen($event.target.files)" multiple>
+     <br>
+     <br>
+     <br>
+     <label >imagen</label><br>
+    <input type="file" (change)="cargandoImagen($event.target.files)">
 
        
    

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ApiService {
-  public url_servidor = "http://edvfelipe.pythonanywhere.com/api/imagenes/?codigo=QPIJKO3B37EO9SS6RENHE1WP975LGK";
+  public url_servidor = "http://edvfelipe.pythonanywhere.com/api/imagenes/?codigo=";
   baseurl="http://edvfelipe.pythonanywhere.com/api";
   httpHeaders= new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http:HttpClient) { }
@@ -36,21 +36,13 @@ export class ApiService {
     const body ={titulo: datosM.titulo,descripcion:datosM.descripcion,direccion:datosM.direccion,fecha:datosM.fecha,hora:datosM.hora,disponible:datosM.disponible,rutaLugar:datosM.rutaLugar,calificacionP:datosM.calificacionP,idDepartamento:datosM.idDepartamento}
     return this.http.put(this.baseurl+'/eventos/?codigo='+datosM.codigo,body,{headers: this.httpHeaders});
   }
-  onUpload(selectedFile,codigo){
-    const fd = new FormData();
-    fd.append('imagen',selectedFile,selectedFile.name);
-    this.http.post('http://edvfelipe.pythonanywhere.com/api/imagenes/?codigo='+codigo, fd) 
-    .subscribe(res=> {
-      console.log(res);
-    }
-    );
-    
-  }
-  public postFileImagen(imagenParaSubir: File){
 
+  public postFileImagen(imagenParaSubir:File,codigo){
+    codigo="WRO1EVAR92UIYYIRA0PM9H1GAE0AXH";
 		const formData = new FormData(); 
-		formData.append('imagenPropia', imagenParaSubir, imagenParaSubir.name); 
-		return this.http.post(this.url_servidor, formData);
+    formData.append('imagen', imagenParaSubir, imagenParaSubir.name); 
+    formData.append("codigoEvento", codigo);
+		return this.http.post(this.url_servidor+codigo, formData);
 
 	}
   
