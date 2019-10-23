@@ -33,4 +33,28 @@ export class ApiService {
     return this.http.post(this.baseurl + '/eventos/', evento, {headers: this.httpHeaders});
   }
 
+  //ver los tipos de localidades que existen en la api
+  getTipoLocalidad(): Observable<any> {
+    return this.http.get(this.baseurl+'/tipolocalidad/',{headers: this.httpHeaders});
+  }
+  //obtener las localidades de la api
+  getLocalidad(): Observable<any> {
+    return this.http.get(this.baseurl+'/localidad/',{headers: this.httpHeaders});
+  }
+  //agregar a la localidad
+  AgregarLocalidad(puestos): Observable<any> {
+    const local={costo:puestos.costo,cantidadAsientos:puestos.cantidadAsientos,cantidadAsientosDisponible:puestos.cantidadAsientosDisponible,cantidadAsientosOcupados:puestos.cantidadAsientosOcupados,codigoEventos:puestos.codigoEventos,idTipoLocalidad:puestos.idTipoLocalidad};
+    return this.http.post(this.baseurl+'/localidad/', local,{headers: this.httpHeaders});
+  }
+  //agregar asientos a la api
+  AgregarAsientos(asiento): Observable<any> {
+    const Asientos={numeroAsiento:asiento.numeroAsiento,disponible:asiento.disponible,idLocalidad:asiento.idLocalidad};
+    return this.http.post(this.baseurl+'/asientos/', Asientos,{headers: this.httpHeaders});
+  }
+  //actualizar los tipos de localidad
+  actualizarboleto(boletos): Observable<any> {
+    const boleto ={tipoLocalidad:boletos.tipoLocalidad}
+    return this.http.put(this.baseurl+'/tipolocalidad/?id='+boletos.id,boleto,{headers: this.httpHeaders});
+  }
+
 }
