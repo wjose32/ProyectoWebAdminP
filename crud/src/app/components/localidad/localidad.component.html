@@ -1,0 +1,55 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<body>
+    <label> Tipo de asiento &nbsp;</label>
+      <div>
+          <select name="seleccion" id="seleccion" [(ngModel)]="Local.idTipoLocalidad"  class="form-control" >
+              <option value={{tipoasiento.id}} *ngFor="let tipoasiento of tipoasiento">
+                {{tipoasiento.tipoLocalidad}}
+             </option>
+            </select>        
+      </div>
+    <label>Total de asientos &nbsp;</label>
+    <input type="number" min="0" max="5000" pattern="^[0-9]+" placeholder="Numero de asientos" [(ngModel)]="Local.cantidadAsientos" [(ngModel)]="Local.cantidadAsientosDisponible"/><br>
+    <label>Seleccionar evento &nbsp;</label>
+    <div>
+      <select name="seleccio" id="seleccio" [(ngModel)]="Local.codigoEventos"  class="form-control" >
+          <option value={{eventos.codigo}} *ngFor="let eventos of eventos">
+            {{eventos.titulo}}
+         </option>
+        </select>        
+  </div>
+    <label>Costo del asiento &nbsp;</label>
+    <input type="number" placeholder="Costo" min="0" max="10000" pattern="^[0-9]+" [(ngModel)]="Local.costo"/><br>
+    <div class="col-12 col-md-12 " >
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="AgregarLocalidad()" onclick="Mensaje2()" >AgregarLocalidad</button><br>
+    </div>
+  
+    <label for="">cambio de Tipo localidad</label>
+    <div>
+      <select name="seleccion" id="seleccion" [(ngModel)]="tipocam.id"  class="form-control" >
+          <option value={{tipoasiento.id}} *ngFor="let tipoasiento of tipoasiento">
+            {{tipoasiento.tipoLocalidad}}
+         </option>
+        </select>        
+  </div>
+    <input type="text" placeholder="nombre de la localidad" [(ngModel)]="tipocam.tipoLocalidad"/><br>
+    <div class="col-12 col-md-12 " >
+      <button type="button" class="btn btn-primary btn-lg btn-block" (click)="actualizarLocalidad()" onclick="Mensaje()" >cambiar nombre localidad</button><br>
+  </div>
+  
+  </body>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+  <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  

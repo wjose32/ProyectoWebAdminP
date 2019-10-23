@@ -12,12 +12,14 @@ import { environment } from '../environments/environment';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireAuth} from '@angular/fire/auth';
+import { LocalidadComponent } from './components/localidad/localidad.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CrearEventoComponent
+    CrearEventoComponent,
+    LocalidadComponent
   ],
   imports: [
     BrowserModule,
