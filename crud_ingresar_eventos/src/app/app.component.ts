@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,10 +23,9 @@ export class AppComponent {
     this.getDatos();
     this.getDepartamentos();
     this.datosclicked(this.datos);
-    this.seleccionarEvento = {codgigo:"PVMKS5YE34VPHY19THWF1GPMSV6JVV",titulo: '',descripcion:'',direccion:'',fecha:'',hora:'',disponible:true,rutaLugar:'',calificacionP:0,idDepartamento:1};
+    this.seleccionarEvento = {codgigo:-1,titulo: '',descripcion:'',direccion:'',fecha:'',hora:'',disponible:true,rutaLugar:'',calificacionP:0,idDepartamento:1};
     this.seleccionarDepartamento={id:-1,nombre:''}
   }
-
 
   getDatos=()=>{
     this.api.getTODOSLOSDATOS().subscribe(
@@ -39,7 +39,6 @@ export class AppComponent {
     );
   }
 
-
   getDepartamentos=()=>{
     this.api.getDEPARTAMAENTOS().subscribe(
       data =>{
@@ -50,8 +49,6 @@ export class AppComponent {
         console.log(error);
           });
       }
-
-
   Agregar=()=>{
     this.api.Agregar(this.datos1).subscribe(
       data => {
@@ -62,8 +59,6 @@ export class AppComponent {
       }
     );
   }
-
-
   datosclicked=(datosM)=>{
 this.api.getUnDato(datosM.codigo).subscribe(
   data => {
@@ -73,19 +68,7 @@ this.api.getUnDato(datosM.codigo).subscribe(
     console.log(error);
   }
 );
-
   }
-  datosclicked2=(datosD)=>{
-    this.api.getUnDato(datosD.codigo).subscribe(
-      data => {
-        this.seleccionarEvento=data;
-      },
-      error =>{
-        console.log(error);
-      }
-    );
-    
-      }
   datosclickeddep=(dertamentosD)=>{
     this.api.getUnDatodep(dertamentosD.codigo).subscribe(
       data => {
@@ -121,21 +104,19 @@ this.api.getUnDato(datosM.codigo).subscribe(
     console.log(event);
     this.selectedFile = <File>event.target.files[0];
   }
+  subirImagen=(selectedFile,datosM)=>{
+    this.api.onUpload(this.selectedFile,datosM.codigo);
+  }
 
 
 
+  public cargandoImagen(files: FileList){
 
-  cargandoImagen=(files: FileList)=>{
-      this.api.postFileImagen(files[0],"WRO1EVAR92UIYYIRA0PM9H1GAE0AXH").subscribe(
-        data => {
-          console.log(this.seleccionarEvento.codgigo);
-        },
-        error =>{
-          console.log(error);
-        }
-  
-      );//FIN DE METODO SUBSCRIBE
-  
+		this.api.postFileImagen(files[0]).subscribe(
+
+		);//FIN DE METODO SUBSCRIBE
+
 	}
+
 
 }
