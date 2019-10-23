@@ -41,9 +41,8 @@ export class ApiService {
     const body ={titulo: datosM.titulo,descripcion:datosM.descripcion,direccion:datosM.direccion,fecha:datosM.fecha,hora:datosM.hora,disponible:datosM.disponible,rutaLugar:datosM.rutaLugar,calificacionP:datosM.calificacionP,idDepartamento:datosM.idDepartamento}
     return this.http.put(this.baseurl+'/eventos/?codigo='+datosM.codigo,body,{headers: this.httpHeaders});
   }
-   //funcion para cargar la imagen... el codigo esta estatico pero despues lo cambiare a dinamico
+   //funcion para cargar la imagen. se manda un archivo y y el codigo del evento 
   public postFileImagen(imagenParaSubir:File,codigo){
-    codigo="WRO1EVAR92UIYYIRA0PM9H1GAE0AXH";
 		const formData = new FormData(); 
     formData.append('imagen', imagenParaSubir, imagenParaSubir.name); 
     formData.append("codigoEvento", codigo);
