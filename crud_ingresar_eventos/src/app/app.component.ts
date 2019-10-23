@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,7 +23,7 @@ export class AppComponent {
     this.getDatos();
     this.getDepartamentos();
     this.datosclicked(this.datos);
-    this.seleccionarEvento = {codgigo:"PVMKS5YE34VPHY19THWF1GPMSV6JVV",titulo: '',descripcion:'',direccion:'',fecha:'',hora:'',disponible:true,rutaLugar:'',calificacionP:0,idDepartamento:1};
+    this.seleccionarEvento = {codgigo:-1,titulo: '',descripcion:'',direccion:'',fecha:'',hora:'',disponible:true,rutaLugar:'',calificacionP:0,idDepartamento:1};
     this.seleccionarDepartamento={id:-1,nombre:''}
   }
 
@@ -68,6 +69,7 @@ export class AppComponent {
 this.api.getUnDato(datosM.codigo).subscribe(
   data => {
     this.seleccionarEvento=data;
+    console.log(datosM.codigo)
   },
   error =>{
     console.log(error);
@@ -88,8 +90,11 @@ this.api.getUnDato(datosM.codigo).subscribe(
       }
   datosclickeddep=(dertamentosD)=>{
     this.api.getUnDatodep(dertamentosD.codigo).subscribe(
+      
       data => {
+
         this.seleccionarDepartamento=data;
+        console.log(dertamentosD)
       },
       error =>{
         console.log(error);
@@ -125,10 +130,10 @@ this.api.getUnDato(datosM.codigo).subscribe(
 
 
 
-  cargandoImagen=(files: FileList)=>{
-      this.api.postFileImagen(files[0],"WRO1EVAR92UIYYIRA0PM9H1GAE0AXH").subscribe(
+  cargandoImagen=(files: FileList,codigo)=>{
+      this.api.postFileImagen(files[0],codigo).subscribe(
         data => {
-          console.log(this.seleccionarEvento.codgigo);
+          console.log(codigo);
         },
         error =>{
           console.log(error);

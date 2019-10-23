@@ -40,19 +40,21 @@
                  <br>
                  <label >Departamento</label><br>
                      <div >
-                            <div >
+                            <div class="form-group" >
+                              <label for="department"> 
+                                
+                              </label>
                               <!--lista de departamentos  -->
-                                   <select  >
-                                            <option  *ngFor="let dertamentosD of dertamentos" [value]="dertamentosD.nombre" >
-                                           <h2 (click)=datosclickeddep(dertamentosD) > {{dertamentosD.nombre}}</h2> 
-                    
+                                   <select id="department" name="department" [(ngModel)]="datos1.idDepartamento" class="form-control"  >
+                                            <option  *ngFor="let dertamentosD of dertamentos" [value]="dertamentosD.id" >
+                                          {{dertamentosD.nombre}}
                                             </option>
                                   </select>
                                     <br>
                                     <br>
                            </div>
                      </div>
-                  <input id="ocultar" type="text" [(ngModel)]="seleccionarDepartamento.codigo"/><br> <!-- * comentarla* -->
+                  
                   <button (click)="Agregar()">Agregar</button>
   </div>
  <br>
@@ -94,19 +96,22 @@
             ruta<input type="text" [(ngModel)]="seleccionarEvento.rutaLugar"/><br>
             calificacion<input type="text" [(ngModel)]="seleccionarEvento.calificacionP"/><br> 
             <label >cambiar el nombre departamento por la id</label>
-            deptartamento<input type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/><br> <!-- * comentarla* -->
+            deptartamento<input id="ocultar" type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/><br> <!-- * comentarla* -->
             <div >
-                  <div >
-                    <!-- lista de departamentos. pendiente -->
-                        <select id="listaactualizar" onchange="ddlselect;" >
-                                <option  *ngFor="let dertamentos of derrtamentos" >
-                                {{dertamentos.nombre}
+                <div class="form-group" >
+                  <label for="departmentA"> 
+                    departamento
+                  </label>
+                  <!--lista de departamentos  -->
+                       <select id="departmentA" name="departmentA" [(ngModel)]="seleccionarEvento.idDepartamento" class="form-control"  >
+                                <option  *ngFor="let dertamentosAs of dertamentos" [value]="dertamentosAs.id" >
+                              {{dertamentosAs.nombre}}
                                 </option>
-                         </select>
-                         <br>
-                         <br>
-                    </div>
-              </div>
+                      </select>
+                        <br>
+                        <br>
+               </div>
+         </div>
               <br>
     </div>
     <button (click)="actualizarEvento()">acualizar</button><!-- actualizar evento -->
@@ -116,9 +121,18 @@
     </div>
      <br>
      <br>
+     <ul>
+     <li *ngFor= "let datosD of datos">
+      <h2  (click)=datosclicked(datosD) > {{datosD.titulo}}</h2> 
+     </li> 
+    </ul>      
+    <label for="codigoIma" >Titulo del evento</label><br>
+    <input readonly="readonly"  type="text" [(ngModel)]="seleccionarEvento.titulo"/><br> 
+    <label for="codigoIma" >Codigo del evento</label><br>
+    <input id=cod readonly="readonly" type="text" [(ngModel)]="seleccionarEvento.codigo"/><br> 
      <br>
-      <label >imagen</label><br>
-      <input type="file" (change)="cargandoImagen($event.target.files)">
+      <label >Cargar imagen</label><br>
+      <input type="file" (change)="cargandoImagen($event.target.files,seleccionarEvento.codigo)" >
 
        
    
