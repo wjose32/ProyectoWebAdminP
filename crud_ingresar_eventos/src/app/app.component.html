@@ -88,13 +88,24 @@
      <label >lista eventos</label>
      <label >haga click en el nombre del evento a modificar</label>
      <br>
-     <ul>
-                     <li *ngFor= "let datosM of datos">
-                      <h2 id="llamada" (click)=datosclicked(datosM) > {{datosM.titulo}}</h2> 
-                     </li>  
+     <ul   >
+
+
+
+          <div >
+              <div >
+                  <select onchange="datosclicked(datosM)"  >
+                      <option *ngFor= "let datosM of datos" >
+                          <h2 (click)=datosclicked(datosM) > {{datosM.titulo}}</h2> 
                           
-                          
-                 
+                     </option>
+                    </select>
+                  
+                  <br>
+                  <br>
+            </div>
+          </div>
+        
         
           
 </ul>
@@ -106,7 +117,6 @@ fecha<input type="date" [(ngModel)]="seleccionarEvento.fecha"/><br>
 hora<input type="time" [(ngModel)]="seleccionarEvento.hora"/><br> 
 ruta<input type="text" [(ngModel)]="seleccionarEvento.rutaLugar"/><br>
 calificacion<input type="text" [(ngModel)]="seleccionarEvento.calificacionP"/><br> 
-<label >cambiar el nombre departamento por la id</label>
 deptartamento<input type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/><br> <!-- * comentarla* -->
     <div >
         <div >
@@ -130,13 +140,8 @@ deptartamento<input type="text" [(ngModel)]="seleccionarEvento.idDepartamento"/>
 
     <label >imagen</label>
     <input type="file" (change)="onFileSelected($event)"><br>
-  
     <br>
-    <button type="button" (click)="subirImagen()" >cargar imagen</button><br>
-    <br>
-    <br>
-
-    <input type="file" (change)="cargandoImagen($event.target.files)" multiple>
+    <button type="button" (click)="subirImagen()" >cargar imagen</button>
 
        
    
